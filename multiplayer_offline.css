@@ -1,0 +1,187 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ff7700;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'%3E%3Cpolygon fill='%23cc0000' points='957 450 539 900 1396 900'/%3E%3Cpolygon fill='%23aa0000' points='957 450 872.9 900 1396 900'/%3E%3Cpolygon fill='%23d6002b' points='-60 900 398 662 816 900'/%3E%3Cpolygon fill='%23b10022' points='337 900 398 662 816 900'/%3E%3Cpolygon fill='%23d9004b' points='1203 546 1552 900 876 900'/%3E%3Cpolygon fill='%23b2003d' points='1203 546 1552 900 1162 900'/%3E%3Cpolygon fill='%23d3006c' points='641 695 886 900 367 900'/%3E%3Cpolygon fill='%23ac0057' points='587 900 641 695 886 900'/%3E%3Cpolygon fill='%23c4008c' points='1710 900 1401 632 1096 900'/%3E%3Cpolygon fill='%239e0071' points='1710 900 1401 632 1365 900'/%3E%3Cpolygon fill='%23aa00aa' points='1210 900 971 687 725 900'/%3E%3Cpolygon fill='%23880088' points='943 900 1210 900 971 687'/%3E%3C/svg%3E");
+    background-attachment: fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+}
+.content
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+
+}
+.baagchaal{
+     filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.5));
+}
+.text{
+    font-family: fantasy;
+    display: flex;
+    flex-direction: row;
+    
+    color: white;
+    justify-content: space-between;
+    padding-right: 30px;
+    padding-left: 10px;
+}
+.text p {
+    font-size: 5vh;
+    margin: 0; 
+    line-height: 1.2;
+}
+.message img {
+    width: 100%;       /* Default image width at 60% of the container */
+    max-width: 550px; /* Maximum width limit */
+    height: auto; 
+    float: left;    /* Maintains aspect ratio */
+}
+.boardsection{
+    border: 15px solid rgb(95, 57, 57);
+    padding: 10px;
+    border-radius: 20px;
+    background-color: rgb(255,255,255);
+    box-shadow: 0 0 20px rgba(39, 39, 39, 0.774);
+}
+.board {
+    background-image: url(images/board.png);
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: center; 
+    display: grid;
+    grid-template-columns: repeat(5, 100px);
+    grid-template-rows: repeat(5, 100px);
+    row-gap: 2.2%;
+    column-gap: 2.8%;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.square {
+    width:50px;
+    height: 50px;
+    background-color: transparent;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1200px) {
+ .baagchaal img{
+    height: 400px;
+    top: 0;
+ }
+ .text{
+    justify-content: space-between;
+
+ }
+ .text p{
+    margin: 10px;
+    font-size: 4vh;
+ }
+
+}
+@media screen and (max-width: 1050px) {
+   .content{
+    display: flex;
+    flex-direction: column;
+   }
+}
+.settings{
+height: 70px;
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+padding-right: 5%; 
+}
+.icons{
+display: flex;
+flex-direction: row;
+}
+.sound{
+  display: flex;
+  align-items: center;
+  margin-right: 40px;
+  cursor: pointer; 
+}
+.music{
+display: flex; 
+align-items: center;
+cursor: pointer;
+}
+.error{
+    color: white;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+.logo{
+cursor: pointer;
+}
+@media screen and (max-width: 530px) {
+ .settings{
+    display: none;
+ }
+ .content{
+    display: none;
+ }
+ .error{
+    display: flex;
+ }
+}
+
+
+/* for game over message */
+.gameover {
+    background-color: rgba(0, 0, 0, 0.788);
+    height: 100vh; 
+    width: 100%;
+    position: fixed; 
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.gameover .message{
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    background-color: #ff7700;
+    padding: 25px;
+    border-radius: 5px;
+
+}
+.gameover .message .buttons{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    width: 100%;
+    justify-content: end;
+}
+.gameover .message .winner{
+    color:rgb(255, 255, 255);
+    font-size: 40px;
+    background-color: rgb(146, 91, 29);
+    padding: 20px;
+    border-radius: 7px;
+}
+.gameover .message .buttons button{
+    background-color: #cc0001;
+    border: none;
+    color: white;
+    padding: 8px 20px 8px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 20px;
+    
+    
+}

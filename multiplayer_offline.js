@@ -136,8 +136,9 @@ sound.addEventListener("click",function(){
 var musicplay=new Audio('sounds/background music.mp3');
 musicplay.loop = false; 
 musicplay.currentTime = 0; 
-musicplay.play();
 musicplay.volume=0.2;
+
+  
 //for music icon clicked 
 music.addEventListener("click",function(){
     if(musicOn)
@@ -162,6 +163,60 @@ music.addEventListener("click",function(){
     }
 })
 
+var tcc;
+var gcc;
+var CPIT=false;
+var GPIT=false;
+
+var wholescreen = document.getElementsByClassName("gameover")[0];
+var back_button = document.getElementsByClassName("back")[0];
+var restart = document.getElementsByClassName("restart")[0];
+var winnertext= document.getElementsByClassName("winner")[0];
+// winnertext.textContent = "You are the winner!";
+wholescreen.style.display = "none";
+back_button.addEventListener("click", function() {
+    wholescreen.style.display = "none";
+});
+restart.addEventListener("click",function(){
+  turn=0;
+  clickedCount=0;
+  goatClickedCount=0;
+  firstClicKed="";
+  lastClicked="";
+  CPIT=false;
+  GPIT=false;
+
+
+  goatKilled.textContent = "Goat Killed: 0";
+  tigerTrapped.textContent = "Tiger Trapped: 0";
+  goatKilledCount=0;
+  tigerTrappedCount=0;
+
+  board = [
+    [2,0,0,0,2],
+    [0,0,0,0,0],
+    [0,0,0,0,0],
+    [0,0,0,0,0],
+    [2,0,0,0,2]
+];
+
+for (let i = 0; i < boardposition.length; i++) {
+   for(let j=0;j<boardposition.length;j++)
+   {
+    
+    var positionoftiger=document.getElementById(boardposition[i][j]);
+    positionoftiger.innerHTML="";
+   }
+}
+
+A1.appendChild(T_img.cloneNode());
+A5.appendChild(T_img.cloneNode());
+E1.appendChild(T_img.cloneNode());
+E5.appendChild(T_img.cloneNode());
+
+
+wholescreen.style.display = "none";
+});
 
 
 // Loop through each ID
@@ -191,6 +246,8 @@ elementIds.forEach(function(id) {
                            if(soundOn)
                              {
                              var audio1=new Audio('sounds/gameover.mp3');
+                            wholescreen.style.display = "";
+                             winnertext.textContent = "Goats wins!!";
                              audio1.loop = false; 
                              audio1.currentTime = 0; 
                              audio1.play();
@@ -206,6 +263,11 @@ elementIds.forEach(function(id) {
                     {
                     firstClicKed=id;
                     clickedCount=1;
+                    if(!GPIT){
+                      document.getElementById(id).style.filter = 'hue-rotate(90deg)';
+                      gcc = id;
+                      GPIT=true;
+                    }
                       if(soundOn)
                       {
                         var audio=new Audio('sounds/pick.mp3');
@@ -231,6 +293,8 @@ elementIds.forEach(function(id) {
                           turn++;
                           clickedCount=0;
                           tigerTrapped.textContent = "Tiger Trapped: "+TTC();
+                          document.getElementById(gcc).style.filter = 'hue-rotate(0deg)';
+                          GPIT=false;
                           var ttc=TTC();
                             if(soundOn)
                              {
@@ -265,6 +329,13 @@ elementIds.forEach(function(id) {
                     }else if(board[ClickedIndexinBoard_IF(id)][ClickedIndexinBoard_IL(id)]==1){
                         firstClicKed=id;
                         clickedCount=1;
+
+                      if(GPIT){
+                      document.getElementById(gcc).style.filter = 'hue-rotate(0deg)';
+                      gcc = id;
+                      document.getElementById(id).style.filter = 'hue-rotate(90deg)';
+                    }
+
                           if(soundOn)
                       {
                         var audio=new Audio('sounds/pick.mp3');
@@ -286,6 +357,12 @@ elementIds.forEach(function(id) {
                     {
                     firstClicKed=id;
                     clickedCount=1;
+                    
+                    if(!CPIT){
+                      document.getElementById(id).style.filter = 'hue-rotate(90deg)';
+                      tcc = id;
+                      CPIT=true;
+                    }
                       if(soundOn)
                       {
                         var audio=new Audio('sounds/pick.mp3');
@@ -314,6 +391,8 @@ elementIds.forEach(function(id) {
                           goatPosition.innerHTML="";
                           goatKilledCount++;
                           goatKilled.textContent = "Goat Killed: "+goatKilledCount;
+                          document.getElementById(tcc).style.filter = 'hue-rotate(0deg)';
+                          CPIT=false;
                           tigerTrapped.textContent = "Tiger Trapped: "+TTC();
                           firstClicKed="";
                           lastClicked="";
@@ -326,11 +405,20 @@ elementIds.forEach(function(id) {
                              audio.currentTime = 0; 
                              audio.play();
                              }
+                             if(soundOn)
+                             {
+                             var audio=new Audio('sounds/goat.mp3');
+                             audio.loop = false; 
+                             audio.currentTime = 0; 
+                             audio.play();
+                             }
 
-                    if(goatKilledCount==5)
+                    if(goatKilledCount==20)
                          {
                            if(soundOn)
                              {
+                              wholescreen.style.display = "";
+                             winnertext.textContent = "Tigers wins!!";
                              var audio1=new Audio('sounds/gameover.mp3');
                              audio1.loop = false; 
                              audio1.currentTime = 0; 
@@ -348,6 +436,8 @@ elementIds.forEach(function(id) {
                           firstClicKed="";
                           lastClicked="";
                           tigerTrapped.textContent = "Tiger Trapped: "+TTC();
+                          document.getElementById(tcc).style.filter = 'hue-rotate(0deg)';
+                          CPIT=false;
                           turn++;
                           clickedCount=0;
                              if(soundOn)
@@ -383,6 +473,11 @@ elementIds.forEach(function(id) {
                     }else if(board[ClickedIndexinBoard_IF(id)][ClickedIndexinBoard_IL(id)]==2){
                         firstClicKed=id;
                         clickedCount=1;
+                        if(CPIT){
+                        document.getElementById(tcc).style.filter = 'hue-rotate(0deg)';
+                        tcc=id;
+                        document.getElementById(id).style.filter = 'hue-rotate(90deg)';
+                       }
                            if(soundOn)
                              {
                              var audio=new Audio('sounds/pick.mp3');

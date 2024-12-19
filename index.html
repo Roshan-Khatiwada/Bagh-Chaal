@@ -3,18 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>Baagh Chaal</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="error">
-        <h1>Sorry! This app is not available on mobile devices. <br> <br>Please Try in PCs or Desktops.<br><br>
-            Developer Mr.Roshan Khatiwada doesn't have time to make responsive in mobile devices. 
-            (ThankYou)</h1>
-    </div>
     <div class="settings" >
           <div class="logo">
-           <img src="images/logo.png" alt="" height="100px">
+           <img src="images/logo.png" alt="" height="80px">
           </div>
           <div class="icons" >
             <div class="sound" id="sound">
@@ -25,99 +21,97 @@
     </div>
     <div class="content">
     <div class="message">
-        <center> 
+
         <div class="baagchaal" > 
-        <img src="images/FINALBAAGCHAAL.png" alt="" height="500px">
-        </div> </center>
-        <div class="text">
- <p id="goatKilled" > Goat Killed :</p>
-    <p id="tigerTrapped">Tiger Trapped : </p>
+        <img src="images/FINALBAAGCHAAL.png" alt="">
+        </div> 
+         <div class="baagh_chaal_content">
+         <div class="text_baagchaal">
+             <p>
+                 Baagh Chaal, or "The Game of the Tiger," is a traditional Nepali 
+                 strategy game that brings to life the age-old battle between hunter 
+                 and prey. Played on a 5x5 grid, this game pits two sides against each
+                  other—the tigers (Baagh) and the goats (Chaal). One player controls 
+                  four tigers, whose goal is to hunt and capture the goats, while the
+                   other controls 20 goats, aiming to outmaneuver and trap the tigers.
+                    The tiger player tries to capture at least five goats by "leaping" 
+                    over them, while the goat player focuses on restricting the tigers’ 
+                    movements until they can no longer move freely. With each move, Baagh 
+                    Chaal demands a high level of strategy, patience, and anticipation,
+                    offering players an engaging experience that celebrates the wit and 
+                    traditions of Nepal. This game remains a cherished pastime, connecting 
+                    friends and families through a thrilling challenge of intellect and 
+                    cultural heritage.
+                    Baagh Chaal is more than just a game; it is a fascinating way of understanding
+                     the dynamics of predator-prey relationships and strategic thinking. The game
+                      has been passed down through generations, symbolizing not only a cherished 
+                      form of entertainment but also an educational tool that sharpens the mind 
+                      and encourages patience, foresight, and creative problem-solving. As players 
+                      immerse themselves in the intricate maneuvers of tigers and goats, they are 
+                      also connecting with Nepal’s heritage, reliving a tradition that has brought
+                       joy and competition to households for centuries. Whether enjoyed as a friendly 
+                       match or a fierce competition, Baagh Chaal remains a timeless reminder of Nepal’s
+                        rich cultural legacy and the timeless appeal of strategy games.
+                </p>
         </div>
-   
-    </div>
-    <div class="boardsection">
-    <div class="board">
-        <div class="square" id="A1" >
-             
+        <div class="playbuttons">
+            <center>
+           <button id="setting-btn"><i class="fas fa-cog" ></i> Settings</button>
+           </center>
+           <center>
+          <a href="multiplayer_offline.html" style="text-decoration: none; color: white;"> <button><i class="fas fa-play"></i> Play</button></a>
+           </center>
         </div>
-        <div class="square" id="A2" >
-             
-        </div>
-        <div class="square" id="A3" >
-             
-        </div>
-        <div class="square" id="A4" >
-             
-        </div>
-        
-        <div class="square" id="A5" >
-             
-        </div>
-        <div class="square" id="B1" >
-             
-        </div>
-        <div class="square" id="B2">
-             
-        </div>
-        <div class="square" id="B3">
-             
-        </div>
-        <div class="square" id="B4">
-             
-        </div>
-        <div class="square" id="B5">
-             
-        </div>
-        <div class="square" id="C1">
-             
-        </div>
-        <div class="square" id="C2">
-             
-        </div>
-        <div class="square" id="C3">
-             
-        </div>
-        <div class="square" id="C4">
-             
-        </div>
-        <div class="square" id="C5">
-             
-        </div>
-        <div class="square" id="D1">
-             
-        </div>
-        <div class="square" id="D2">
-             
-        </div>
-        <div class="square" id="D3">
-             
-        </div>
-        <div class="square" id="D4">
-             
-        </div>
-        <div class="square" id="D5">
-             
-        </div>
-        <div class="square" id="E1">
-             
-        </div>
-        <div class="square" id="E2">
-             
-        </div>
-        <div class="square" id="E3">
-             
-        </div>
-        <div class="square" id="E4">
-             
-        </div>
-        <div class="square" id="E5">
-             
         </div>
     </div>
     </div>
+    <div class="settingON" id="settingON">
+        <div class="message" id="message">
+            <div class="toggles" id="toggles">
+                  <div class="sound">
+        <div class="text">Sound</div>
+        <button class="toggle" onclick="toggleSound()" id="sound">Off</button>
     </div>
+    <div class="music">
+        <div class="text">Music</div>
+        <button class="toggle" onclick="toggleMusic()" id="music">Off</button>
+    </div>
+            </div>
+            <div class="buttons" id="buttons">
+                <div class="cancel" id="cancel">
+                    <BUTTON>Cancel</BUTTON>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
-<script src="script.js">
+<script src="multiplayer_offline.js"></script>
+<script>
+    function toggleSound() {
+    const soundButton = document.querySelector('.sound .toggle');
+    soundButton.classList.toggle('on');
+    soundButton.textContent = soundButton.classList.contains('on') ? 'On' : 'Off';
+}
+
+    function toggleMusic() {
+        const musicButton = document.querySelector('.music .toggle');
+        musicButton.classList.toggle('on');
+        musicButton.textContent = musicButton.classList.contains('on') ? 'On' : 'Off';
+    }
     
+    let cancel = document.querySelector('.buttons .cancel');
+    let setting = document.querySelector('.settingON');
+    let settingBtn=document.querySelector('#setting-btn');
+
+    setting.style.display='none';   
+    cancel.addEventListener('click',function(){
+        setting.style.display='none';
+    });
+
+    settingBtn.addEventListener('click',function(){
+        setting.style.display='flex';
+    });
+
 </script>
 </html>
